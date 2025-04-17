@@ -16,9 +16,7 @@ app.get("/protected", (req: express.Request, res: express.Response) => {
   res.send("hello from protected");
 });
 
-app.get("/auth/google", authRouter);
-app.get("/auth/google/callback", authRouter);
-app.get("/auth/failure", authRouter);
+app.get("/auth", authRouter);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

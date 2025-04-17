@@ -1,6 +1,5 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import passport from "passport";
-import "./googleAuth.ts";
 
 const clientID = process.env.GOOGLE_CLIENT_ID;
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
@@ -18,7 +17,7 @@ passport.use(
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
-      return done(err, profile);
+      return done(null, profile);
     },
   ),
 );
