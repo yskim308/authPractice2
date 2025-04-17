@@ -1,5 +1,6 @@
 import express from "express";
 import passport from "passport";
+import "../auth/googleAuth.ts";
 export { router };
 
 const router = express.Router();

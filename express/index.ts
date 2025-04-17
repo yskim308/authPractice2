@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import passport from "passport";
 import session from "express-session";
-import "./auth/googleAuth.ts";
 import { router as authRouter } from "./routes/authRoutes.ts";
 
 const app = express();
