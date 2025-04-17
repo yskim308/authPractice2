@@ -1,5 +1,6 @@
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import passport from "passport";
+import "./googleAuth.ts";
 
 const clientID = process.env.GOOGLE_CLIENT_ID;
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET;
@@ -13,13 +14,19 @@ passport.use(
     {
       clientID: clientID,
       clientSecret: clientSecret,
-      callbackURL: "http://yourdomain:3000/auth/google/callback",
+      callbackURL: "http://localhost:4000/google/callback",
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return done(err, user);
-      });
+      return done(err, profile);
     },
   ),
 );
+
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
