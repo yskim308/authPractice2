@@ -16,7 +16,7 @@ app.get("/protected", (req: express.Request, res: express.Response) => {
   res.send("hello from protected");
 });
 
-app.get("/auth", authRouter);
+app.use("/auth", authRouter);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
